@@ -2,11 +2,20 @@
   "name": "geckoterminal-nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "main.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["TON", "terminal", "nodejs", "GeckoTerminal", "Geckoterminal"],
+  "keywords": [
+    "TON",
+    "terminal",
+    "nodejs",
+    "GeckoTerminal",
+    "Geckoterminal"
+  ],
   "author": "Xusk947",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2"
+  }
 }
