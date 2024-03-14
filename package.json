@@ -1,0 +1,12 @@
+{
+  "name": "geckoterminal-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["TON", "terminal", "nodejs", "GeckoTerminal", "Geckoterminal"],
+  "author": "Xusk947",
+  "license": "ISC"
+}
