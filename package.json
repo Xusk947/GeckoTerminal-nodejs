@@ -1,5 +1,5 @@
 {
-  "name": "@geckoterminal/sdk",
+  "name": "@xusk_studio/geckoterminal-sdk",
   "version": "0.1.0",
   "description": "Typescript SDK to interact with the Gecko Terminal API",
   "license": "MIT",

@@ -14,7 +14,7 @@
 To install Gecko Terminal SDK via NPM use
 
 ```bash
-npm install tonweb @geckoterminal/sdk
+npm install tonweb @xusk_studio/geckoterminal-sdk
 
-yarn add tonweb @geckoterminal/sdk
+yarn add tonweb @xusk_studio/geckoterminal-sdk
 ```
