@@ -1,15 +1,13 @@
 export interface DexResponse {
-    data: Dex[];
+  data: Dex[];
 }
 
 export interface Dex {
-    id: string;
-    type: string;
-    attributes: DexAttributes;
+  id: string;
+  type: string;
+  attributes: DexAttributes;
 }
 
 export interface DexAttributes {
-    name: string;
+  name: string;
 }
-
-

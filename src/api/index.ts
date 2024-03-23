@@ -1,1 +1,1 @@
-export * from "./geckoTerminalApi"
+export * from './geckoTerminalApi';

@@ -1,13 +1,13 @@
 export interface NetworkResponse {
-    data: Network[];
+  data: Network[];
 }
 
 export interface Network {
-    id: string;
-    type: string;
-    attributes: NetworkAttributes;
+  id: string;
+  type: string;
+  attributes: NetworkAttributes;
 }
 
 export interface NetworkAttributes {
-    name: string;
+  name: string;
 }
