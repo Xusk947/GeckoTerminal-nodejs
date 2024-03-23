@@ -1,8 +1,10 @@
 {
-  "name": "geckoterminal-nodejs",
+  "name": "@geckoterminal/sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "Typescript SDK to interact with Gecko Terminal",
+  "license": "ISC",
   "main": "index.ts",
+  "homepage": "https://github.com/Xusk947/GeckoTerminal-nodejs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,9 +15,6 @@
     "GeckoTerminal",
     "Geckoterminal"
   ],
-  "author": "Xusk947",
-  "license": "ISC",
-  "dependencies": {
-    "ts-node": "^10.9.2"
-  }
+  "author": "Xusk947"
+  
 }
