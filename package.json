@@ -4,9 +4,13 @@
   "description": "Typescript SDK to interact with Gecko Terminal",
   "license": "ISC",
   "main": "index.ts",
+  "module": "index.ts",
   "homepage": "https://github.com/Xusk947/GeckoTerminal-nodejs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    ".": "./index.ts"
   },
   "keywords": [
     "TON",
