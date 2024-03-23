@@ -15,6 +15,9 @@
     "GeckoTerminal",
     "Geckoterminal"
   ],
-  "author": "Xusk947"
-  
+  "author": "Xusk947",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
 }
