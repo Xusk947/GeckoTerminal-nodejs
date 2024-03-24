@@ -1,5 +1,5 @@
 <div align="center">
- <h1>STON.fi SDK</h1>
+ <h1>Gecko Terminal SDK</h1>
 </div>
 
 [![TON](https://img.shields.io/badge/based%20on-Gecko-Terminal-violet)](https://ton.org/)
