@@ -1,6 +1,6 @@
 {
   "name": "@xusk_studio/geckoterminal-sdk",
-  "version": "0.1.4",
+  "version": "0.2.4",
   "type": "module",
   "description": "Typescript SDK to interact with the Gecko Terminal API",
   "license": "MIT",
