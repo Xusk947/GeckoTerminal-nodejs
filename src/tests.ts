@@ -1,16 +1,16 @@
-import { GeckoTerminalApi } from  './api';
-import test from 'node:test';
+// import { GeckoTerminalApi } from  './api';
+// import test from 'node:test';
 
-console.log('RUNNING TESTS');
+// console.log('RUNNING TESTS');
 
-const api = new GeckoTerminalApi();
+// const api = new GeckoTerminalApi();
 
-const network = 'ton'
-const token1 = 'EQC0KYVZpwR-dTkPwVRqagH2D31he931R7oUbPIBo_77F97K'
+// const network = 'ton'
+// const token1 = 'EQC0KYVZpwR-dTkPwVRqagH2D31he931R7oUbPIBo_77F97K'
 
-const eth = 'eth'
-const ethToken = '0x60594a405d53811d3bc4766596efd80fd545a270'
-const ethDex = "sushiswap"
+// const eth = 'eth'
+// const ethToken = '0x60594a405d53811d3bc4766596efd80fd545a270'
+// const ethDex = "sushiswap"
 // test('test simple', async () => {
 //     const res = await api.getSimple(network, token1);
 
@@ -82,11 +82,10 @@ const ethDex = "sushiswap"
 //     console.log(res.length)
 //     for (let index = 0; index < res.length; index++) {
 //         const element = res[index];
-        
+
 //         console.log(element.id)
 //         console.log(element.type)
 //         console.log(element.attributes)
 //         console.log(element.relationships)
 //     }
 // })
-

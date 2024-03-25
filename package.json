@@ -1,6 +1,6 @@
 {
   "name": "@xusk_studio/geckoterminal-sdk",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "description": "Typescript SDK to interact with the Gecko Terminal API",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "prebuild": "npm install && rimraf dist && npm run lint ",
     "build": "vite build",
     "lint": "npm run lint:prettier",
-    "lint:fix": "npm run lint:prettier -- --write",
+    "lint:fix": "npm run lint:prettier --loglevel warn --write",
     "lint:prettier": "prettier --check ./",
     "test": "node"
   },

@@ -13,7 +13,7 @@ import {
 export class GeckoTerminalApi {
   private baseUrl: String = 'https://api.geckoterminal.com/api/v2';
 
-  constructor() { }
+  constructor() {}
 
   /**
    * Get the simple token price response.
@@ -67,7 +67,9 @@ export class GeckoTerminalApi {
     page: number = 1,
     include: string | string[] | null = null,
   ): Promise<PoolResponse> {
-    const fullUrl = `/networks/${network}/trending_pools${this.getQueryString(include)}`;
+    const fullUrl = `/networks/${network}/trending_pools${this.getQueryString(
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -80,7 +82,9 @@ export class GeckoTerminalApi {
     address: string,
     include: string | string[] | null = null,
   ): Promise<PoolResponse> {
-    const fullUrl = `/networks/${network}/pools/${address}${this.getQueryString(include)}`;
+    const fullUrl = `/networks/${network}/pools/${address}${this.getQueryString(
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -109,7 +113,11 @@ export class GeckoTerminalApi {
     include: string | string[] | null = null,
     sort: PoolSortOptions = PoolSortOptions.h24_tx_count_desc,
   ): Promise<PoolResponse> {
-    const fullUrl = `/networks/${network}/pools${this.getQueryStringWithPageAndPoolSort(page, sort, include)}`;
+    const fullUrl = `/networks/${network}/pools${this.getQueryStringWithPageAndPoolSort(
+      page,
+      sort,
+      include,
+    )}`;
     return this.get<PoolResponse>(fullUrl);
   }
 
@@ -123,7 +131,11 @@ export class GeckoTerminalApi {
     include: string | string[] | null = null,
     sort: PoolSortOptions = PoolSortOptions.h24_tx_count_desc,
   ): Promise<PoolResponse> {
-    const fullUrl = `/networks/${network}/dexes/${dex}/pools${this.getQueryStringWithPageAndPoolSort(page, sort, include)}`;
+    const fullUrl = `/networks/${network}/dexes/${dex}/pools${this.getQueryStringWithPageAndPoolSort(
+      page,
+      sort,
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -136,7 +148,10 @@ export class GeckoTerminalApi {
     page: number = 1,
     include: string | string[] | null = null,
   ): Promise<PoolResponse> {
-    const fullUrl = `/networks/${network}/new_pools${this.getQueryStingWithPage(page, include)}`;
+    const fullUrl = `/networks/${network}/new_pools${this.getQueryStingWithPage(
+      page,
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -148,8 +163,10 @@ export class GeckoTerminalApi {
     page: number = 1,
     include: string | string[] | null = null,
   ): Promise<PoolResponse> {
-    const fullUrl =
-      `/networks/new_pools${this.getQueryStingWithPage(page, include)}`;
+    const fullUrl = `/networks/new_pools${this.getQueryStingWithPage(
+      page,
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -163,7 +180,12 @@ export class GeckoTerminalApi {
     page: number = 1,
     include: string | string[] | null = null,
   ): Promise<PoolResponse> {
-    const fullUrl = `/search/pools${this.getQuerySearch(query, page, network, include)}`;
+    const fullUrl = `/search/pools${this.getQuerySearch(
+      query,
+      page,
+      network,
+      include,
+    )}`;
 
     return this.get<PoolResponse>(fullUrl);
   }
@@ -182,7 +204,11 @@ export class GeckoTerminalApi {
     include: string | string[] | null = null,
     sort: TokenSortOptions = TokenSortOptions.h24_tx_count_desc,
   ): Promise<TokensInfo> {
-    const fullUrl = `/networks/${network}/tokens/${token_address}/pools${this.getQueryStringWithPageAndTokenSort(page, sort, include)}`;
+    const fullUrl = `/networks/${network}/tokens/${token_address}/pools${this.getQueryStringWithPageAndTokenSort(
+      page,
+      sort,
+      include,
+    )}`;
 
     return this.get<TokensInfo>(fullUrl);
   }
@@ -195,46 +221,64 @@ export class GeckoTerminalApi {
     address: string,
     include: string | string[] | null = null,
   ): Promise<TokensResponse> {
-    const fullUrl = `/networks/${network}/tokens/${address}${this.getQueryString(include)}`;
+    const fullUrl = `/networks/${network}/tokens/${address}${this.getQueryString(
+      include,
+    )}`;
 
     return this.get<TokensResponse>(fullUrl);
   }
 
   /**
- * Generates a query string for searching in the GeckoTerminal API.
- *
- * @param {string} query - Search query: can be pool address, token address, or token symbol.
- * @param {number} [page=1] - Page number for pagination.
- * @param {string | null} [network=null] - Network id from /networks list.
- * @param {string | string[] | null} [include=null] - Attributes for related resources to include, which will be returned under the top-level "included" key.
- * @return {string} Matching pools.
- */
-  private getQuerySearch(query: string, page: number = 1, network: string | null = null, include: string | string[] | null = null) {
+   * Generates a query string for searching in the GeckoTerminal API.
+   *
+   * @param {string} query - Search query: can be pool address, token address, or token symbol.
+   * @param {number} [page=1] - Page number for pagination.
+   * @param {string | null} [network=null] - Network id from /networks list.
+   * @param {string | string[] | null} [include=null] - Attributes for related resources to include, which will be returned under the top-level "included" key.
+   * @return {string} Matching pools.
+   */
+  private getQuerySearch(
+    query: string,
+    page: number = 1,
+    network: string | null = null,
+    include: string | string[] | null = null,
+  ) {
     // out like this: https://api.geckoterminal.com/api/v2/search/pools?query=ETH&network=eth&include=base_token&page=1
-    network = network ? `&network=${network}` : ""
-    include = include ? `&include=${include}` : ""
+    network = network ? `&network=${network}` : '';
+    include = include ? `&include=${include}` : '';
 
-    return `?query=${query}${network}${include}&page=${page}`
+    return `?query=${query}${network}${include}&page=${page}`;
   }
 
-  private getQueryStingWithPage(page: number = 1, include: string | string[] | null = null) {
+  private getQueryStingWithPage(
+    page: number = 1,
+    include: string | string[] | null = null,
+  ) {
     if (!include) {
-      return `?page=${page}`
+      return `?page=${page}`;
     }
-    return this.getQueryString(include) + `&page=${page}`
+    return this.getQueryString(include) + `&page=${page}`;
   }
 
-  private getQueryStringWithPageAndPoolSort(page: number = 1, sort: PoolSortOptions = PoolSortOptions.h24_tx_count_desc, include: string | string[] | null = null) {
+  private getQueryStringWithPageAndPoolSort(
+    page: number = 1,
+    sort: PoolSortOptions = PoolSortOptions.h24_tx_count_desc,
+    include: string | string[] | null = null,
+  ) {
     if (!include) {
-      return `?page=${page}&sort=${sort.toString()}`
+      return `?page=${page}&sort=${sort.toString()}`;
     }
-    return this.getQueryString(include) + `&page=${page}&sort=${sort}`
+    return this.getQueryString(include) + `&page=${page}&sort=${sort}`;
   }
-  private getQueryStringWithPageAndTokenSort(page: number = 1, sort: TokenSortOptions = TokenSortOptions.h24_tx_count_desc, include: string | string[] | null = null) {
+  private getQueryStringWithPageAndTokenSort(
+    page: number = 1,
+    sort: TokenSortOptions = TokenSortOptions.h24_tx_count_desc,
+    include: string | string[] | null = null,
+  ) {
     if (!include) {
-      return `?page=${page}&sort=${sort.toString()}`
+      return `?page=${page}&sort=${sort.toString()}`;
     }
-    return this.getQueryString(include) + `&page=${page}&sort=${sort}`
+    return this.getQueryString(include) + `&page=${page}&sort=${sort}`;
   }
   private getQueryString(include: string | string[] | null) {
     if (!include) {
