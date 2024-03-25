@@ -1,3 +1,7 @@
+export interface TokensInfo {
+  data: TokenInfo[];
+}
+
 export interface TokenInfo {
   id: string;
   type: string;
