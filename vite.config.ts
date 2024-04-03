@@ -9,7 +9,7 @@ export default defineConfig({
     },
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "ston-sdk",
+      name: "gecko-sdk",
       fileName: 'index',
     },
     minify: true,

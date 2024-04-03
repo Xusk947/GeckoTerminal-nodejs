@@ -1,9 +1,9 @@
-// import { GeckoTerminalApi } from  './api';
-// import test from 'node:test';
+import { GeckoTerminalApi } from './api';
+import test from 'node:test';
 
-// console.log('RUNNING TESTS');
+console.log('RUNNING TESTS');
 
-// const api = new GeckoTerminalApi();
+const api = new GeckoTerminalApi();
 
 // const network = 'ton'
 // const token1 = 'EQC0KYVZpwR-dTkPwVRqagH2D31he931R7oUbPIBo_77F97K'
@@ -88,4 +88,9 @@
 //         console.log(element.attributes)
 //         console.log(element.relationships)
 //     }
+// })
+
+// test('test get ohlc', async () => {
+//     const res = await api.getOhlcvs('eth', '0x60594a405d53811d3bc4766596efd80fd545a270');
+//     console.log(res.data)
 // })

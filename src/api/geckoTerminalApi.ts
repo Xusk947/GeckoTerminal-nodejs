@@ -2,6 +2,7 @@ import {
   DexResponse,
   GeckoTerminalError,
   NetworkResponse,
+  OhlcvResponse,
   PoolResponse,
   SimpleTokenPriceResponse,
   TokenInfo,
@@ -203,14 +204,14 @@ export class GeckoTerminalApi {
     page: number = 1,
     include: string | string[] | null = null,
     sort: TokenSortOptions = TokenSortOptions.h24_tx_count_desc,
-  ): Promise<TokensInfo> {
+  ): Promise<PoolResponse> {
     const fullUrl = `/networks/${network}/tokens/${token_address}/pools${this.getQueryStringWithPageAndTokenSort(
       page,
       sort,
       include,
     )}`;
 
-    return this.get<TokensInfo>(fullUrl);
+    return this.get<PoolResponse>(fullUrl);
   }
 
   /**
@@ -226,6 +227,44 @@ export class GeckoTerminalApi {
     )}`;
 
     return this.get<TokensResponse>(fullUrl);
+  }
+
+  /**
+   * Retrieves the OHLCV data of a pool for a specified network, pool address, and time frame.
+   *
+   * @param {string} network - The network ID from the list of networks.
+   * @param {string} pool_address - The address of the pool to retrieve the OHLCV data for.
+   * @param {TimeFrame} [timeframe=TimeFrame.hour] - The time frame for the OHLCV data. Available values are 'day', 'hour', 'minute'. Defaults to 'hour'.
+   * @param {string} [aggregate='1'] - The time period to aggregate for each OHLCV data point
+   * |  Available values (day): 1
+   * |  Available values (hour): 1, 4, 12
+   * |  Available values (minute): 1, 5, 15
+   * |
+   * @param {string | null} [before_timestamp='0'] - Return OHLCV data before this timestamp (integer seconds since epoch).
+   * @param {string} [limit='100'] - Limit the number of OHLCV results to return. Default is 100, maximum is 1000.
+   * @param {Currency} [currency=Currency.token] - Return OHLCV in USD or quote token. Available values are 'usd' or 'token'. Defaults to 'token'.
+   * @param {string} [token=''] - Return OHLCV for base or quote token. Available values are 'base', 'quote', or a token address. Defaults to 'base'.
+   * @return {void}
+   */
+  public getOhlcvs(
+    network: string,
+    pool_address: string,
+    timeframe: TimeFrame = TimeFrame.hour,
+    aggregate: string = '1',
+    before_timestamp: string | null = null,
+    limit: string = '100',
+    currency: Currency = Currency.token,
+    token: string = '',
+  ) {
+    const fullUrl = `/networks/${network}/pools/${pool_address}/ohlcv/${timeframe}?${this.getQueryStringOHLCVS(
+      aggregate,
+      before_timestamp,
+      limit,
+      currency,
+      token,
+    )}`;
+
+    return this.get<OhlcvResponse>(fullUrl);
   }
 
   /**
@@ -248,6 +287,21 @@ export class GeckoTerminalApi {
     include = include ? `&include=${include}` : '';
 
     return `?query=${query}${network}${include}&page=${page}`;
+  }
+
+  private getQueryStringOHLCVS(
+    aggregate: string = '0',
+    before_timestamp: string | null = null,
+    limit: string = '100',
+    currency: Currency = Currency.token,
+    token: string = '',
+  ) {
+    let _before_timestamp = before_timestamp
+      ? `&before_timestamp=${before_timestamp}`
+      : '';
+    let _token = token ? `&token=${token}` : '';
+
+    return `aggregate=${aggregate}${_before_timestamp}&limit=${limit}&currency=${currency}${_token}`;
   }
 
   private getQueryStingWithPage(
@@ -319,4 +373,15 @@ export enum TokenSortOptions {
   h24_volume_usd_liquidity_desc = 'h24_volume_usd_liquidity_desc',
   h24_tx_count_desc = 'h24_tx_count_desc',
   h24_volume_usd_desc = 'h24_volume_usd_desc',
+}
+
+export enum TimeFrame {
+  day = 'day',
+  hour = 'hour',
+  minute = 'minute',
+}
+
+export enum Currency {
+  token = 'token',
+  usd = 'usd',
 }

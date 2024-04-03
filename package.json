@@ -1,14 +1,14 @@
 {
   "name": "@xusk_studio/geckoterminal-sdk",
-  "version": "0.2.5",
-  "type": "module",
+  "version": "0.2.8",
   "description": "Typescript SDK to interact with the Gecko Terminal API",
+  "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xusk947/geckoterminal-nodejs.git"
   },
-  "homepage": "https://github.com/ston-fi/geckoterminal-nodejs",
+  "homepage": "https://github.com/xusk947/geckoterminal-nodejs#readme",
   "contributors": [
     "Xusk947 (https://github.com/xusk947)"
   ],
@@ -33,7 +33,7 @@
     "lint": "npm run lint:prettier",
     "lint:fix": "npm run lint:prettier --loglevel warn --write",
     "lint:prettier": "prettier --check ./",
-    "test": "node"
+    "test": "node "
   },
   "devDependencies": {
     "@types/bn.js": "5.1.1",
