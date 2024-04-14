@@ -6,8 +6,10 @@ import {
   PoolResponse,
   SimpleTokenPriceResponse,
   TokenInfo,
+  TokenInfoResponse,
   TokenResponse,
   TokensInfo,
+  TokensInfoResponse,
   TokensResponse,
 } from '../model';
 
@@ -229,6 +231,65 @@ export class GeckoTerminalApi {
     return this.get<TokensResponse>(fullUrl);
   }
 
+  /**
+   * getMultipleTokensOnNetwork
+   *
+   * @summary Get multiple tokens on a network
+   *
+   * @param network - network id from /networks list
+   * @param address - comma-separated list of token addresses (up to 30 addresses)
+   * @param include - Attributes for related resources to include, which will be returned under the top-level "included" key
+   *
+   * @returns Promise<TokensInfoResponse>
+   */
+  public getMultipleTokensOnNetwork(
+    network: string,
+    address: string,
+    include: string | string[] | null = null,
+  ): Promise<TokensInfoResponse> {
+    const fullUrl = `/networks/${network}/tokens/multi/${address}${this.getQueryString(
+      include,
+    )}`;
+
+    return this.get<TokensInfoResponse>(fullUrl);
+  }
+
+  /**
+   * getSpecificTokenInfoOnNetwork
+   *
+   * @summary Get specific token info on a network
+   *
+   * @param network - network id from /networks list
+   * @param address - token address
+   *
+   * @returns Promise<TokensInfoResponse>
+   */
+  public getSpecificTokenInfo(
+    network: string,
+    address: string,
+  ): Promise<TokenInfoResponse> {
+    const fullUrl = `/networks/${network}/tokens/${address}/info`;
+
+    return this.get<TokenInfoResponse>(fullUrl);
+  }
+
+  public getPoolTokenInfo(
+    network: string,
+    pool_address: string,
+  ): Promise<TokenInfoResponse> {
+    const fullUrl = `/networks/${network}/pools/${pool_address}/info`;
+
+    return this.get<TokenInfoResponse>(fullUrl);
+  }
+
+  public getRecentlyUpdatedTokens(
+    include: string | string[] | null = null,
+  ): Promise<TokensInfoResponse> {
+    const fullUrl = `/tokens/info_recently_updated${this.getQueryString(
+      include,
+    )}`;
+    return this.get<TokensInfoResponse>(fullUrl);
+  }
   /**
    * Retrieves the OHLCV data of a pool for a specified network, pool address, and time frame.
    *
